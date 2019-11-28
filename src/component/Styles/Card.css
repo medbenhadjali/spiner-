@@ -1,0 +1,47 @@
+.card-container{
+    border:1px solid grey;
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+    /* border-top-right-radius: 8px;
+    border-top-left-radius: 8px; */
+}
+.image-container{
+    width: 100%;
+    height: 90%;
+    /* background-color: aqua; */
+    position: relative;
+ 
+}
+.footer{
+    width: 100%;
+    height: 10% ;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.rate-container{
+    position: absolute;
+    width: 60%;
+    height: 25px;
+    /* background-color: white; */
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-size: contain;
+    display: flex;
+}
+.image{
+    width: 100%;
+    height: 100%;
+    /* border-top-right-radius:8px;
+    border-top-left-radius: 8px; */
+    
+}
+.starts-container
+{
+    width: 100%;
+    border:1px solid black;
+}

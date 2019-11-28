@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -19,4 +19,21 @@
 
 .App-link {
   color: #09d3ac;
+} */
+.list-film{
+  display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+.search-container{
+  display: flex;
+  justify-content: center;
+  margin-right: 354px;
+
+
+}
+.container-spinner{
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }

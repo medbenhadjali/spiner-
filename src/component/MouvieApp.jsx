@@ -1,8 +1,20 @@
+// import React from 'react'
+
+// export default function MouvieApp() {
+//     return (
+//         <div>
+            
+//         </div>
+//     )
+// }
+
 import React, { useState, useD } from "react";
-import "./App.css";
-import MouvieApp from "./component/MouvieApp"
-import Loder from "./component/Loder"
-import Hoc from "./component/Hoc";
+import "../App.css";
+import Form from "./Form";
+import Card from "./Card";
+import Recherche from "./Recherche";
+import MinRate from "./MinRate";
+import Loder from "./Loder";
 let tab = [];
 let arrayfilm = [
   {
@@ -34,21 +46,55 @@ let arrayfilm = [
       "https://resize-elle.ladmedia.fr/r/625,,forcex/crop/625,804,center-middle,forcex,ffffff/img/var/plain_site/storage/images/loisirs/cinema/news/j-y-vais-j-y-vais-pas/the-revenant-la-vengeance-animale-de-leonardo-dicaprio-3047311/61177183-1-fre-FR/The-Revenant-la-vengeance-animale-de-Leonardo-DiCaprio.jpg"
   }
 ];
-const Light = Hoc(Loder, MouvieApp)
+
 const App = () => {
   const [array, setArray] = useState([]);
-  const [isloading,setLoading]=useState(true)
-React.useEffect(()=>{
-  setTimeout(() => {
-   setLoading(false)
-  }, 5000)
-},[])
- 
+//   const [isloading,setLoading]=useState(true)
+// React.useEffect(()=>{
+//   setTimeout(() => {
+//    setLoading(false)
+//   }, 5000)
+// },[])
+  onsubmit = film => {
+    arrayfilm = [...arrayfilm, film];
+    setArray(arrayfilm);
+  };
+  const [tab1, setTab] = useState([]);
+
+  const [titre, settitre] = useState("");
+
+  const result = titrerecup => {
+    settitre(titrerecup);
+  };
+
+  const [valinit, setvalinit] = useState(1);
+  const recupRate = y => {
+    setvalinit(y);
+  };
+  // isloading?<h1 className="container-spinner">< Loder /></h1>
   return(
     <div className="App">
-     <Light isLoading={isloading} />
-     
+      <div className="search-container">
+      {/* <Hoc isloading={isloading}/> */}
+
+        <div> <Recherche result={result} value={titre} /></div>
+        <div><MinRate rate={valinit} recupRate={recupRate} /></div>
       
+      </div>
+      <br />
+      <div className="list-film">
+        {arrayfilm
+          .filter(
+            x =>
+              x.Name.toUpperCase().includes(titre.toUpperCase().trim()) &&
+              x.Rate >= valinit
+          )
+          .map((el, i) => (
+            <Card info={el} />
+          ))}
+      </div>
+
+      <Form onsubmit={onsubmit} />
     </div>
   );
 };
